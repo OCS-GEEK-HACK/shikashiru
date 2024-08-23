@@ -44,7 +44,7 @@ const MapComponent = () => {
                 lng: 139.70522242457778,
             }} zoom={defaultMapZoom}
                 options={defaultMapOptions}>
-                {currentPosition && <MarkerF title="現在地" label='現在地' icon="zundamon-pin.png" position={currentPosition} />}
+                {currentPosition && <MarkerF title="現在地" label='現在地' icon={{url: "zundamon-pin.png", size: new google.maps.Size(20, 50)}} position={currentPosition} />}
             </GoogleMap>
         </Box>
     )
