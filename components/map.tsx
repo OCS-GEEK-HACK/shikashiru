@@ -58,6 +58,7 @@ const MapComponent = () => {
                     return (
                         <MarkerF
                             key={index}
+                            icon={{ url: "pin.png", size: new google.maps.Size(85, 112), scaledSize: new google.maps.Size(85, 112) }}
                             position={{
                                 lat: point.lat,
                                 lng: point.lng
