@@ -8,7 +8,7 @@ we need to make this component client rendered as well else error occurs
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { Box, useAsync } from "@yamada-ui/react";
 import { useState } from "react";
-import data from "@/components/data.json"
+import data from "@/components/map-data.json"
 
 //Map's styling
 export const defaultMapContainerStyle = {
