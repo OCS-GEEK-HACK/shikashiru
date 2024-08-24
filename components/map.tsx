@@ -6,9 +6,10 @@ we need to make this component client rendered as well else error occurs
 
 //Map component Component from library
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
-import { Box, useAsync } from "@yamada-ui/react";
+import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
 import { useState } from "react";
 import data from "@/components/map-data.json"
+import { DetailModal } from "./detail-modal";
 
 //Map's styling
 export const defaultMapContainerStyle = {
@@ -20,6 +21,8 @@ export const defaultMapContainerStyle = {
 const MapComponent = () => {
     //  現在地
     const [currentPosition, setCurrentPosition] = useState<google.maps.LatLng | undefined>();
+    const [currentIndex, setCurrentIndex] = useState<number | undefined>(undefined)
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const defaultMapZoom = 17
     const defaultMapOptions: google.maps.MapOptions = {
         zoomControl: false,
@@ -46,14 +49,18 @@ const MapComponent = () => {
         const latlng = new google.maps.LatLng(34.68180674746938, 135.82913639406763); //中心の緯度, 経度
         setCurrentPosition(latlng);
     })
+
     return (
         <Box w="full" h="full">
+            {
+                currentIndex !== undefined && <DetailModal isOpen={isOpen} onClose={onClose} name={data[currentIndex].name} description={data[currentIndex].description} images={data[currentIndex].images} />
+            }
             <GoogleMap mapContainerStyle={defaultMapContainerStyle} center={currentPosition ?? {
                 lat: 34.68180674746938,
                 lng: 135.82913639406763,
             }} zoom={defaultMapZoom}
                 options={defaultMapOptions}>
-                {currentPosition && <MarkerF title="現在地" label='現在地' icon={{ url: "zundamon-pin.png", size: new google.maps.Size(135, 206), scaledSize: new google.maps.Size(135, 206) }} position={currentPosition} />}
+                {currentPosition && <MarkerF title="現在地" icon={{ url: "zundamon-pin.png", size: new google.maps.Size(135, 206), scaledSize: new google.maps.Size(135, 206) }} position={currentPosition} />}
                 {data?.map((point, index) => {
                     return (
                         <MarkerF
@@ -62,6 +69,10 @@ const MapComponent = () => {
                             position={{
                                 lat: point.lat,
                                 lng: point.lng
+                            }}
+                            onClick={() => {
+                                index !== undefined ? onOpen() : onClose()
+                                setCurrentIndex(index)
                             }}
                         />
                     );
