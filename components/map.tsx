@@ -8,7 +8,7 @@ we need to make this component client rendered as well else error occurs
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
 import { useState } from "react";
-import data from "@/components/map-data.json"
+import mapData from "@/components/map-data.json"
 import { DetailModal } from "./detail-modal";
 
 //Map's styling
@@ -53,7 +53,7 @@ const MapComponent = () => {
     return (
         <Box w="full" h="full">
             {
-                currentIndex !== undefined && <DetailModal isOpen={isOpen} onClose={onClose} name={data[currentIndex].name} description={data[currentIndex].description} images={data[currentIndex].images} />
+                currentIndex !== undefined && <DetailModal isOpen={isOpen} onClose={onClose} name={mapData[currentIndex].name} description={mapData[currentIndex].description} images={mapData[currentIndex].images} />
             }
             <GoogleMap mapContainerStyle={defaultMapContainerStyle} center={currentPosition ?? {
                 lat: 34.68180674746938,
@@ -61,7 +61,7 @@ const MapComponent = () => {
             }} zoom={defaultMapZoom}
                 options={defaultMapOptions}>
                 {currentPosition && <MarkerF title="現在地" icon={{ url: "zundamon-pin.png", size: new google.maps.Size(135, 206), scaledSize: new google.maps.Size(135, 206) }} position={currentPosition} />}
-                {data?.map((point, index) => {
+                {mapData?.map((point, index) => {
                     return (
                         <MarkerF
                             key={index}
