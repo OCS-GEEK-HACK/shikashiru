@@ -21,7 +21,12 @@ const MapComponent = () => {
     const [currentPosition, setCurrentPosition] = useState<google.maps.LatLng | undefined>();
     const defaultMapZoom = 18
     const defaultMapOptions: google.maps.MapOptions = {
-        zoomControl: true,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false,
         tilt: 0,
         gestureHandling: 'auto',
     };
