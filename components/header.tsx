@@ -16,7 +16,7 @@ const buttonsData = [
 
 export const Header:FC = () => {
     const [active, setActive] = useState<number | undefined>(undefined)
-    return <HStack w="full" as="header" justifyContent="space-between" background="headerAlpha.600" backdropBlur="blur(10px)" backdropFilter="blur(10px)" backdropSaturate="saturate(180%)" boxShadow="sm" p="md" position="fixed" top={0} zIndex={1}>
+    return <HStack w="full" as="header" justifyContent="space-between" background="headerAlpha.600" backdropBlur="10px" backdropFilter="auto" backdropSaturate="180%" boxShadow="sm" p="md" position="fixed" top={0} zIndex={1}>
     <Heading fontFamily="FUTENE" color="#60694B">シカシる<Text as="span" fontSize="md">なのだ。</Text></Heading>
     <ButtonGroup isAttached>
         {
