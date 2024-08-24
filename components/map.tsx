@@ -32,21 +32,24 @@ const MapComponent = () => {
     };
 
     useAsync(async () => {
-        navigator.geolocation.getCurrentPosition((pos) => {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
-            const latlng = new google.maps.LatLng(lat, lng); //中心の緯度, 経度
-            setCurrentPosition(latlng);
-        }, () => {
-            const latlng = new google.maps.LatLng(35.66003283140587, 139.70522242457778); //中心の緯度, 経度
-            setCurrentPosition(latlng);
-        });
+        // // 一旦コメントアウト
+        // navigator.geolocation.getCurrentPosition((pos) => {
+        //     const lat = pos.coords.latitude;
+        //     const lng = pos.coords.longitude;
+        //     const latlng = new google.maps.LatLng(lat, lng); //中心の緯度, 経度
+        //     setCurrentPosition(latlng);
+        // }, () => {
+        //     const latlng = new google.maps.LatLng(34.68180674746938, 135.82913639406763); //中心の緯度, 経度
+        //     setCurrentPosition(latlng);
+        // });
+        const latlng = new google.maps.LatLng(34.68180674746938, 135.82913639406763); //中心の緯度, 経度
+        setCurrentPosition(latlng);
     })
     return (
         <Box w="full" h="full">
             <GoogleMap mapContainerStyle={defaultMapContainerStyle} center={currentPosition ?? {
-                lat: 35.66003283140587,
-                lng: 139.70522242457778,
+                lat: 34.68180674746938,
+                lng: 135.82913639406763,
             }} zoom={defaultMapZoom}
                 options={defaultMapOptions}>
                 {currentPosition && <MarkerF title="現在地" label='現在地' icon={{url: "zundamon-pin.png", size: new google.maps.Size(135, 206), scaledSize: new google.maps.Size(135, 206)}} position={currentPosition} />}
