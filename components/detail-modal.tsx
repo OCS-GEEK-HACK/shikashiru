@@ -20,9 +20,9 @@ export const DetailModal: FC<DetailModalProps> = ({
     return <Modal isOpen={isOpen} onClose={onClose}>
         <ModalHeader></ModalHeader>
 
-        <ModalBody>
+        <ModalBody py="md">
             {/* カルーセルを置く */}
-            <HStack justifyContent="space-between" w="full" py="md">
+            <HStack justifyContent="space-between" w="full">
                 <Heading as="h2" size="md">{name}</Heading>
                 <IconButton icon={<Volume2Icon />} colorScheme="teal" variant="outline" />
             </HStack>
