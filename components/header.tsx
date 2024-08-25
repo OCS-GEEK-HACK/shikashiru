@@ -42,6 +42,10 @@ export const Header: FC = () => {
           <Button
             key={button.key}
             variant={active === index ? "solid" : "ghost"}
+            bgColor={active === index ? "#F0F1D9" : undefined}
+            _hover={{
+              bgColor: "#F0F1D9",
+            }}
             onClick={() => {
               setActive(active === index ? undefined : index);
             }}
