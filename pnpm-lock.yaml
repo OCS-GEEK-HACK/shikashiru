@@ -18,9 +18,6 @@ importers:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@next/third-parties':
-        specifier: ^14.2.6
-        version: 14.2.6(next@14.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@react-google-maps/api':
         specifier: ^2.19.3
         version: 2.19.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -33,6 +30,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      '@yamada-ui/carousel':
+        specifier: ^2.0.2
+        version: 2.0.2(@emotion/is-prop-valid@1.3.0)(@types/react@18.3.4)(embla-carousel@8.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@yamada-ui/lucide':
         specifier: ^1.3.2
         version: 1.3.2(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -275,12 +275,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@14.2.6':
-    resolution: {integrity: sha512-gIayZnFgiir4HlyrqI/KS+MB4y82oVfSYYH4QwHa2KNOtCjX6etF8/cX3pSeSGsQi2VFiI+a9LL+MDMRYgIIoQ==}
-    peerDependencies:
-      next: ^13.0.0 || ^14.0.0
-      react: ^18.2.0
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -410,6 +404,11 @@ packages:
 
   '@yamada-ui/card@1.0.36':
     resolution: {integrity: sha512-lfdCW1EE/e/aQcKDd4ICoItMH/15iV+gU0Fm63Mn+Ki8plFAhvRxkY5T3HigN4zlZVp9jxHW2D1JFvxjf4CrsQ==}
+    peerDependencies:
+      react: '>=18'
+
+  '@yamada-ui/carousel@2.0.2':
+    resolution: {integrity: sha512-U72B43rEO73do4JDbRmcmWjKRfI5PGQEp2PpnitHw//BTCdM6va8qZhE59TmWHSFLs+E438W5bzO6ViDk6WbuA==}
     peerDependencies:
       react: '>=18'
 
@@ -1104,6 +1103,24 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  embla-carousel-auto-scroll@8.2.0:
+    resolution: {integrity: sha512-eeEsEXKJU4xmHXRE93MmZpDGsPnjwVvUxoBGbAs3PrUtoYGqCvxaVEHpv4+vvI3qph3eUVEB5dBhOjqJkpl75g==}
+    peerDependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-react@8.2.0:
+    resolution: {integrity: sha512-dWqbmaEBQjeAcy/EKrcAX37beVr0ubXuHPuLZkx27z58V1FIvRbbMb4/c3cLZx0PAv/ofngX2QFrwUB+62SPnw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+
+  embla-carousel-reactive-utils@8.2.0:
+    resolution: {integrity: sha512-ZdaPNgMydkPBiDRUv+wRIz3hpZJ3LKrTyz+XWi286qlwPyZFJDjbzPBiXnC3czF9N/nsabSc7LTRvGauUzwKEg==}
+    peerDependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel@8.2.0:
+    resolution: {integrity: sha512-rf2GIX8rab9E6ZZN0Uhz05746qu2KrDje9IfFyHzjwxLwhvGjUt6y9+uaY1Sf+B0OPSa3sgas7BE2hWZCtopTA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2068,9 +2085,6 @@ packages:
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
 
-  third-party-capital@1.0.20:
-    resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
-
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -2460,12 +2474,6 @@ snapshots:
   '@next/swc-win32-x64-msvc@14.1.1':
     optional: true
 
-  '@next/third-parties@14.2.6(next@14.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      next: 14.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      third-party-capital: 1.0.20
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2672,6 +2680,25 @@ snapshots:
       react: 18.3.1
     transitivePeerDependencies:
       - '@types/react'
+      - react-dom
+      - supports-color
+
+  '@yamada-ui/carousel@2.0.2(@emotion/is-prop-valid@1.3.0)(@types/react@18.3.4)(embla-carousel@8.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@yamada-ui/button': 1.0.39(@emotion/is-prop-valid@1.3.0)(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@yamada-ui/core': 1.12.0(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@yamada-ui/icon': 1.1.3(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@yamada-ui/use-controllable-state': 1.0.17(react@18.3.1)
+      '@yamada-ui/use-token': 1.1.22(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@yamada-ui/use-value': 1.1.22(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@yamada-ui/utils': 1.3.2(react@18.3.1)
+      embla-carousel-auto-scroll: 8.2.0(embla-carousel@8.2.0)
+      embla-carousel-react: 8.2.0(react@18.3.1)
+      react: 18.3.1
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - '@types/react'
+      - embla-carousel
       - react-dom
       - supports-color
 
@@ -4033,6 +4060,22 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
+  embla-carousel-auto-scroll@8.2.0(embla-carousel@8.2.0):
+    dependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-react@8.2.0(react@18.3.1):
+    dependencies:
+      embla-carousel: 8.2.0
+      embla-carousel-reactive-utils: 8.2.0(embla-carousel@8.2.0)
+      react: 18.3.1
+
+  embla-carousel-reactive-utils@8.2.0(embla-carousel@8.2.0):
+    dependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel@8.2.0: {}
+
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
@@ -5169,8 +5212,6 @@ snapshots:
   tapable@2.2.1: {}
 
   text-table@0.2.0: {}
-
-  third-party-capital@1.0.20: {}
 
   to-fast-properties@2.0.0: {}
 
