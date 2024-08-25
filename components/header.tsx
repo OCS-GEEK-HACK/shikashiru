@@ -31,7 +31,7 @@ export const Header: FC = () => {
       top={0}
       zIndex={1}
     >
-      <Heading fontFamily="FUTENE" color="#60694B">
+      <Heading fontFamily="FUTENE" color="h1.500">
         シカシる
         <Text as="span" fontSize="md">
           なのだ。

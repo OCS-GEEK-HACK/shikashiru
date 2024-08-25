@@ -3,16 +3,15 @@
 //Map component Component from library
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 
 import { DetailModal } from "./detail-modal";
 
 import mapData from "@/components/map-data.json";
 
-export const defaultMapContainerStyle = {
+export const defaultMapContainerStyle: CSSProperties = {
   width: "100%",
   height: "100%",
-  // borderRadius: '15px 0px 0px 15px',
 };
 
 const MapComponent = () => {
