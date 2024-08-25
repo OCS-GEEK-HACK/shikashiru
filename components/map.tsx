@@ -79,7 +79,7 @@ const MapComponent = () => {
           <MarkerF
             title="現在地"
             icon={{
-              url: "zundamon-pin.png",
+              url: "/icon/zundamon-pin.png",
               size: new google.maps.Size(135, 206),
               scaledSize: new google.maps.Size(135, 206),
             }}
@@ -91,7 +91,7 @@ const MapComponent = () => {
             <MarkerF
               key={index}
               icon={{
-                url: "pin.png",
+                url: "/icon/pin.png",
                 size: new google.maps.Size(85, 102),
                 scaledSize: new google.maps.Size(85, 102),
               }}
