@@ -1,3 +1,3 @@
-import { globalStyle } from "./global-style"
+import { globalStyle } from "./global-style";
 
-export default { globalStyle }
+export default { globalStyle };
