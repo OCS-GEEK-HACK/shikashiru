@@ -19,12 +19,14 @@ interface DetailModalProps {
   description: string;
   images: string[];
   onClose: () => void;
+  onNavigate: () => void;
 }
 
 export const DetailModal: FC<DetailModalProps> = ({
   isOpen,
   name,
   description,
+  onNavigate,
   onClose,
 }) => {
   return (
@@ -50,7 +52,9 @@ export const DetailModal: FC<DetailModalProps> = ({
         <Button variant="ghost" onClick={onClose}>
           とじる
         </Button>
-        <Button colorScheme="teal">道案内</Button>
+        <Button colorScheme="teal" onClick={onNavigate}>
+          道案内
+        </Button>
       </ModalFooter>
     </Modal>
   );

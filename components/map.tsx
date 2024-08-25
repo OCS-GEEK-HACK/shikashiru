@@ -1,7 +1,7 @@
 "use client";
 
 //Map component Component from library
-import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import { DirectionsRenderer, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
 import { CSSProperties, useState } from "react";
 
@@ -22,6 +22,9 @@ const MapComponent = () => {
   const [currentIndex, setCurrentIndex] = useState<number | undefined>(
     undefined,
   );
+  const [directionsResponse, setDirectionsResponse] = useState<
+    google.maps.DirectionsResult | undefined
+  >(undefined);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const defaultMapZoom = 17;
   const defaultMapOptions: google.maps.MapOptions = {
@@ -33,6 +36,24 @@ const MapComponent = () => {
     fullscreenControl: false,
     tilt: 0,
     gestureHandling: "auto",
+  };
+
+  const calculateRoute = async () => {
+    if (!currentPosition || currentIndex === undefined) return;
+
+    const directionsService = new google.maps.DirectionsService();
+
+    const result = await directionsService.route({
+      origin: currentPosition,
+      destination: new google.maps.LatLng(
+        mapData[currentIndex].lat,
+        mapData[currentIndex].lng,
+      ),
+      travelMode: google.maps.TravelMode.WALKING,
+    });
+
+    onClose();
+    setDirectionsResponse(result);
   };
 
   useAsync(async () => {
@@ -59,6 +80,7 @@ const MapComponent = () => {
         <DetailModal
           isOpen={isOpen}
           onClose={onClose}
+          onNavigate={calculateRoute}
           name={mapData[currentIndex].name}
           description={mapData[currentIndex].description}
           images={mapData[currentIndex].images}
@@ -106,6 +128,9 @@ const MapComponent = () => {
             />
           );
         })}
+        {directionsResponse && (
+          <DirectionsRenderer directions={directionsResponse} />
+        )}
       </GoogleMap>
     </Box>
   );
