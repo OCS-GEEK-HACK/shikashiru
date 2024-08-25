@@ -11,9 +11,9 @@ import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 // `@eslint/eslintrc` パッケージを使用して、従来の設定を互換性のある形式で読み込む
 
 export default [
+  { ignores: [".next/", "node_modules/", "pnpm-lock.yaml"] },
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
-    ignores: [".next/", "node_modules/", "pnpm-lock.yaml"], // 何故か効かない
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",

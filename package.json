@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0 --ignore-pattern '.next/'",
-    "lint:fix": "eslint . --max-warnings=0 --ignore-pattern '.next/' --fix",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --max-warnings=0 --fix",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {

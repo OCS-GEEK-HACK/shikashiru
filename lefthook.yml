@@ -47,7 +47,7 @@ pre-commit:
       priority: 2
       glob: "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,d.ts}"
       run: |
-        pnpm eslint {staged_files} --max-warnings=0 --ignore-pattern '.next/' --fix
+        pnpm eslint {staged_files} --max-warnings=0 --fix
       stage_fixed: true
 commit-msg:
   commands:
