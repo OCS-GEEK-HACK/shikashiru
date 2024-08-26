@@ -26,6 +26,7 @@ jobs:
         run: |
           node --version
           pnpm install
+          pnpm add -g next
 
       - name: Build Next.js app
-        run: npm run build
+        run: next build
