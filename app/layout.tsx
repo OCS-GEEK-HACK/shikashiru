@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayouet({
   children,
 }: Readonly<{
-  children: React.ReactNaaaaaode;
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
