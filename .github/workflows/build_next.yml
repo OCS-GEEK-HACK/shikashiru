@@ -1,0 +1,31 @@
+name: Build Next.js app
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Install node_modules
+        run: |
+          node --version
+          pnpm install
+
+      - name: Build Next.js app
+        run: npm run build
