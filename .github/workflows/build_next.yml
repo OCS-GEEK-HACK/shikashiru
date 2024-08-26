@@ -1,7 +1,6 @@
 name: Build Next.js app
 
 on:
-  push:
   pull_request:
 
 jobs:
