@@ -1,21 +1,19 @@
 "use client";
 
-import { Button, ButtonGroup, Heading, HStack, Text } from "@yamada-ui/react";
-import { FC, useState } from "react";
-
-const buttonsData = [
-  {
-    key: "list",
-    value: "一覧",
-  },
-  {
-    key: "category-filter",
-    value: "カテゴリー・フィルター",
-  },
-];
+import {
+  Button,
+  ButtonGroup,
+  Heading,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+} from "@yamada-ui/react";
+import { FC } from "react";
 
 export const Header: FC = () => {
-  const [active, setActive] = useState<number | undefined>(undefined);
   return (
     <HStack
       w="full"
@@ -37,22 +35,27 @@ export const Header: FC = () => {
           なのだ。
         </Text>
       </Heading>
-      <ButtonGroup isAttached>
-        {buttonsData.map((button, index) => (
-          <Button
-            key={button.key}
-            variant={active === index ? "solid" : "ghost"}
-            bgColor={active === index ? "#F0F1D9" : undefined}
-            _hover={{
-              bgColor: "#F0F1D9",
-            }}
-            onClick={() => {
-              setActive(active === index ? undefined : index);
-            }}
+      <ButtonGroup gap="md" variant="link">
+        <Button>一覧</Button>
+        <Menu>
+          <MenuButton as={Button}>フィルター</MenuButton>
+          <MenuList
+            background="headerAlpha.500"
+            backdropBlur="10px"
+            backdropFilter="auto"
+            backdropSaturate="180%"
           >
-            {button.value}
-          </Button>
-        ))}
+            <MenuItem justifyContent="center" borderColor="#CCCDB7">
+              寺院
+            </MenuItem>
+            <MenuItem justifyContent="center" borderColor="#CCCDB7">
+              公園
+            </MenuItem>
+            <MenuItem justifyContent="center" borderColor="#CCCDB7">
+              歴史的遺跡
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </ButtonGroup>
     </HStack>
   );
