@@ -28,4 +28,4 @@ jobs:
           pnpm install
 
       - name: Build Next.js app
-        run: npm run build
+        run: pnpm run build
