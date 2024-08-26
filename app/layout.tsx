@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   description: "シカのみぞシる、そんなサイト",
 };
 
-export default function RootLayout({
+export default function RootLayouet({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNaaaaaode;
 }>) {
   return (
     <html lang="en">
