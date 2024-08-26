@@ -1,7 +1,11 @@
 name: Build Next.js app
 
 on:
+  push:
+    branches: ["main", "dev"]
   pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ["main", "dev"]
 
 jobs:
   build:
