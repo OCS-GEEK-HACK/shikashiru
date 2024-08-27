@@ -25,10 +25,10 @@ export const GET = async (request: NextRequest) => {
 
     // URLがundefinedの場合はエラーを返す
     if (!mp3DownloadUrl || !audioStatusUrl) {
-      return new NextResponse(
-        JSON.stringify(
-          "Missing required URLs: mp3DownloadUrl or audioStatusUrl.",
-        ),
+      return NextResponse.json(
+        {
+          message: "Missing required URLs: mp3DownloadUrl or audioStatusUrl.",
+        },
         { status: 400 },
       );
     }
