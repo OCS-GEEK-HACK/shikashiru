@@ -1,21 +1,37 @@
 "use client";
 
-import { Button, ButtonGroup, Heading, HStack, Text } from "@yamada-ui/react";
-import { FC, useState } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Heading,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+} from "@yamada-ui/react";
+import { FC } from "react";
 
-const buttonsData = [
+import { useFilter } from "@/contexts/filter-context";
+
+const filterData = [
   {
-    key: "list",
-    value: "一覧",
+    key: "temples",
+    value: "寺院",
   },
   {
-    key: "category-filter",
-    value: "カテゴリー・フィルター",
+    key: "parks",
+    value: "公園",
+  },
+  {
+    key: "historical-sites",
+    value: "歴史的遺跡",
   },
 ];
 
 export const Header: FC = () => {
-  const [active, setActive] = useState<number | undefined>(undefined);
+  const { selectedKey, setSelectedKey } = useFilter();
   return (
     <HStack
       w="full"
@@ -37,22 +53,31 @@ export const Header: FC = () => {
           なのだ。
         </Text>
       </Heading>
-      <ButtonGroup isAttached>
-        {buttonsData.map((button, index) => (
-          <Button
-            key={button.key}
-            variant={active === index ? "solid" : "ghost"}
-            bgColor={active === index ? "#F0F1D9" : undefined}
-            _hover={{
-              bgColor: "#F0F1D9",
-            }}
-            onClick={() => {
-              setActive(active === index ? undefined : index);
-            }}
+      <ButtonGroup gap="md" variant="link">
+        <Button>一覧</Button>
+        <Menu offset={[0, 28]}>
+          <MenuButton as={Button}>フィルター</MenuButton>
+          <MenuList
+            background="headerAlpha.500"
+            backdropBlur="10px"
+            backdropFilter="auto"
+            backdropSaturate="180%"
           >
-            {button.value}
-          </Button>
-        ))}
+            {filterData.map((data) => (
+              <MenuItem
+                key={data.key}
+                justifyContent="center"
+                borderColor="#CCCDB7"
+                background={data.key === selectedKey ? "headerAlpha.600" : ""}
+                onClick={() => {
+                  setSelectedKey(data.key === selectedKey ? "" : data.key);
+                }}
+              >
+                {data.value}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
       </ButtonGroup>
     </HStack>
   );

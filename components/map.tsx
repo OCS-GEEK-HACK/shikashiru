@@ -8,6 +8,7 @@ import { CSSProperties, useState } from "react";
 import { DetailModal } from "./detail-modal";
 
 import mapData from "@/components/map-data.json";
+import { useFilter } from "@/contexts/filter-context";
 
 export const defaultMapContainerStyle: CSSProperties = {
   width: "100%",
@@ -25,6 +26,7 @@ const MapComponent = () => {
   const [directionsResponse, setDirectionsResponse] = useState<
     google.maps.DirectionsResult | undefined
   >(undefined);
+  const { selectedKey } = useFilter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const defaultMapZoom = 17;
   const defaultMapOptions: google.maps.MapOptions = {
@@ -55,6 +57,11 @@ const MapComponent = () => {
     onClose();
     setDirectionsResponse(result);
   };
+
+  // mapDataをフィルタリングして、選択されたキーに合致するポイントのみを表示
+  const filteredMapData = selectedKey
+    ? mapData.filter((point) => point.category.includes(selectedKey))
+    : mapData;
 
   useAsync(async () => {
     // // 一旦コメントアウト
@@ -108,9 +115,10 @@ const MapComponent = () => {
             position={currentPosition}
           />
         )}
-        {mapData?.map((point, index) => {
+        {filteredMapData?.map((point, index) => {
           return (
             <MarkerF
+              title={point.name}
               key={index}
               icon={{
                 url: "/icon/pin.png",
