@@ -118,6 +118,7 @@ const MapComponent = () => {
         {filteredMapData?.map((point, index) => {
           return (
             <MarkerF
+              title={point.name}
               key={index}
               icon={{
                 url: "/icon/pin.png",
