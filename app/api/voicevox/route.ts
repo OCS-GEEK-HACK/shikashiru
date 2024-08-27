@@ -8,7 +8,10 @@ export const GET = async (request: NextRequest) => {
 
   // 空白チェック
   if (!voiceText) {
-    return NextResponse.json({message: "text parameter is required"}, { status: 400 });
+    return NextResponse.json(
+      { message: "text parameter is required" },
+      { status: 400 },
+    );
   }
 
   try {
@@ -43,9 +46,12 @@ export const GET = async (request: NextRequest) => {
 
       if (statusJson.isAudioReady) break;
       if (statusJson.isAudioError) {
-        return NextResponse.json({message: "Error in generating audio"}, {
-          status: 500,
-        });
+        return NextResponse.json(
+          { message: "Error in generating audio" },
+          {
+            status: 500,
+          },
+        );
       }
     }
 
