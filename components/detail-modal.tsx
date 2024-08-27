@@ -14,6 +14,7 @@ import {
   Heading,
   HStack,
   IconButton,
+  Image,
   Modal,
   ModalBody,
   ModalFooter,
@@ -46,44 +47,25 @@ export const DetailModal: FC<DetailModalProps> = ({
       maxWidth="1200px"
       fontFamily="FUTENE"
       size="lg"
+      pt="md"
     >
       <ModalHeader></ModalHeader>
 
-      <ModalBody py="md">
-        {/* カルーセル */}
-        <Carousel slideSize="50%" autoplay delay={3000} dragFree>
+      <ModalBody>
+        <Carousel slideSize="50%" autoplay delay={3000} dragFree h="sm">
           {images.map((image, index) => (
-            <CarouselSlide
-              key={index}
-              as={Center}
-              bg="primary"
-              style={{
-                height: "300px",
-              }}
-            >
-              <img
+            <CarouselSlide key={index} as={Center} bg="primary">
+              <Image
                 src={image}
                 alt={`${name} image ${index + 1}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
+                w="full"
+                height="full"
+                objectFit="cover"
               />
             </CarouselSlide>
           ))}
-          <CarouselControlPrev
-            style={{
-              position: "absolute",
-              top: "40%",
-            }}
-          />
-          <CarouselControlNext
-            style={{
-              position: "absolute",
-              top: "40%",
-            }}
-          />
+          <CarouselControlPrev />
+          <CarouselControlNext />
           <CarouselIndicators />
         </Carousel>
 
