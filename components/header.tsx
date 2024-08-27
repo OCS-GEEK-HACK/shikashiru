@@ -13,7 +13,25 @@ import {
 } from "@yamada-ui/react";
 import { FC } from "react";
 
+import { useFilter } from "@/contexts/filter-context";
+
+const filterData = [
+  {
+    key: "temples",
+    value: "寺院",
+  },
+  {
+    key: "parks",
+    value: "公園",
+  },
+  {
+    key: "historical-sites",
+    value: "歴史的遺跡",
+  },
+];
+
 export const Header: FC = () => {
+  const { selectedKey, setSelectedKey } = useFilter();
   return (
     <HStack
       w="full"
@@ -37,7 +55,7 @@ export const Header: FC = () => {
       </Heading>
       <ButtonGroup gap="md" variant="link">
         <Button>一覧</Button>
-        <Menu>
+        <Menu offset={[0, 28]}>
           <MenuButton as={Button}>フィルター</MenuButton>
           <MenuList
             background="headerAlpha.500"
@@ -45,15 +63,19 @@ export const Header: FC = () => {
             backdropFilter="auto"
             backdropSaturate="180%"
           >
-            <MenuItem justifyContent="center" borderColor="#CCCDB7">
-              寺院
-            </MenuItem>
-            <MenuItem justifyContent="center" borderColor="#CCCDB7">
-              公園
-            </MenuItem>
-            <MenuItem justifyContent="center" borderColor="#CCCDB7">
-              歴史的遺跡
-            </MenuItem>
+            {filterData.map((data) => (
+              <MenuItem
+                key={data.key}
+                justifyContent="center"
+                borderColor="#CCCDB7"
+                background={data.key === selectedKey ? "headerAlpha.600" : ""}
+                onClick={() => {
+                  setSelectedKey(data.key === selectedKey ? "" : data.key);
+                }}
+              >
+                {data.value}
+              </MenuItem>
+            ))}
           </MenuList>
         </Menu>
       </ButtonGroup>
