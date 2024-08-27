@@ -43,7 +43,7 @@ export const GET = async (request: NextRequest) => {
 
       if (statusJson.isAudioReady) break;
       if (statusJson.isAudioError) {
-        return new NextResponse(JSON.stringify("Error in generating audio"), {
+        return NextResponse.json({message: "Error in generating audio"}, {
           status: 500,
         });
       }
