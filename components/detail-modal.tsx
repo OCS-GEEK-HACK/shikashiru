@@ -44,7 +44,7 @@ export const DetailModal: FC<DetailModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      maxWidth="1200px"
+      maxWidth="7xl"
       fontFamily="FUTENE"
       size="lg"
       pt="md"
@@ -70,7 +70,7 @@ export const DetailModal: FC<DetailModalProps> = ({
         </Carousel>
 
         <HStack justifyContent="space-between" w="full">
-          <Heading as="h2" size="2xl" fontFamily={"FUTENE"}>
+          <Heading as="h2" size="2xl" fontFamily="FUTENE">
             {name}
           </Heading>
           <IconButton
