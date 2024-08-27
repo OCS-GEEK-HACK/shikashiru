@@ -1,26 +1,26 @@
 [
-    {
-        "name":"場所名",
-        "description":"説明",
-        "images": [""],
-        "category": [""],
-        "lat": 34.68239981450138, 
-        "lng": 135.82512482746233
-    },
-    {
-        "name":"場所名",
-        "description":"説明",
-        "images": [""],
-        "category": [""],
-        "lat": 34.6811558292263, 
-        "lng": 135.82501217468487
-    },
-    {
-        "name":"場所名",
-        "description":"説明",
-        "images": [""],
-        "category": [""],
-        "lat": 34.68065293624939,
-        "lng": 135.8257739220441
-    }
+  {
+    "name": "場所名",
+    "description": "説明",
+    "images": [""],
+    "category": ["temples", "parks", "historical-sites"],
+    "lat": 34.68239981450138,
+    "lng": 135.82512482746233
+  },
+  {
+    "name": "場所名",
+    "description": "説明",
+    "images": [""],
+    "category": ["parks", "historical-sites"],
+    "lat": 34.6811558292263,
+    "lng": 135.82501217468487
+  },
+  {
+    "name": "場所名",
+    "description": "説明",
+    "images": [""],
+    "category": ["historical-sites"],
+    "lat": 34.68065293624939,
+    "lng": 135.8257739220441
+  }
 ]
