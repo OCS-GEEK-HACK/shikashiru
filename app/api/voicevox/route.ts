@@ -8,9 +8,7 @@ export const GET = async (request: NextRequest) => {
 
   // 空白チェック
   if (!voiceText) {
-    return new NextResponse(JSON.stringify("text parameter is required"), {
-      status: 400,
-    });
+    return NextResponse.json({message: "text parameter is required"}, { status: 400 });
   }
 
   try {
