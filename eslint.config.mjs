@@ -52,6 +52,7 @@ export default [
       "security/detect-object-injection": "off",
       "simple-import-sort/imports": "off",
       "simple-import-sort/exports": "off",
+      "react/jsx-curly-brace-presence": "error",
       "import/order": [
         "warn",
         {

@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --max-warnings=0 --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier . --check --cache",
+    "format:write": "prettier . --write --cache",
+    "typecheck": "tsc --noEmit",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {

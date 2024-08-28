@@ -1,10 +1,20 @@
 "use client";
+
+import {
+  Carousel,
+  CarouselSlide,
+  CarouselControlNext,
+  CarouselControlPrev,
+  CarouselIndicators,
+} from "@yamada-ui/carousel";
 import { Volume2Icon } from "@yamada-ui/lucide";
 import {
   Button,
+  Center,
   Heading,
   HStack,
   IconButton,
+  Image,
   Modal,
   ModalBody,
   ModalFooter,
@@ -26,17 +36,41 @@ export const DetailModal: FC<DetailModalProps> = ({
   isOpen,
   name,
   description,
+  images,
   onNavigate,
   onClose,
 }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      maxWidth="7xl"
+      fontFamily="FUTENE"
+      size="lg"
+      pt="md"
+    >
       <ModalHeader></ModalHeader>
 
-      <ModalBody py="md">
-        {/* カルーセルを置く */}
+      <ModalBody>
+        <Carousel slideSize="50%" autoplay delay={3000} dragFree h="sm">
+          {images.map((image, index) => (
+            <CarouselSlide key={index} as={Center} bg="primary">
+              <Image
+                src={image}
+                alt={`${name} image ${index + 1}`}
+                w="full"
+                height="full"
+                objectFit="cover"
+              />
+            </CarouselSlide>
+          ))}
+          <CarouselControlPrev />
+          <CarouselControlNext />
+          <CarouselIndicators />
+        </Carousel>
+
         <HStack justifyContent="space-between" w="full">
-          <Heading as="h2" size="md">
+          <Heading as="h2" size="2xl" fontFamily="FUTENE">
             {name}
           </Heading>
           <IconButton
@@ -45,7 +79,9 @@ export const DetailModal: FC<DetailModalProps> = ({
             variant="outline"
           />
         </HStack>
-        <Text>{description}</Text>
+        <Text fontSize="xl" mt="2">
+          {description}
+        </Text>
       </ModalBody>
 
       <ModalFooter>
