@@ -1,4 +1,5 @@
-import { Motion, Heading, Text } from "@yamada-ui/react";
+import { Volume2Icon } from "@yamada-ui/lucide";
+import { Motion, Heading, Text, IconButton } from "@yamada-ui/react";
 import React, { useState, useEffect, FC } from "react";
 
 // おみくじの内容をリストとして定義
@@ -81,6 +82,14 @@ const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
 
   if (!showFortune || !fortune) return null;
 
+  const url = new URL("https://zunda-typing.onrender.com/voicevox");
+  url.searchParams.set("text", fortune.message);
+  const audio = new Audio(url.toString());
+
+  const handlePlayAudio = () => {
+    audio.play();
+  };
+
   return (
     <Motion
       initial={{ opacity: 0 }}
@@ -106,7 +115,15 @@ const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
       <Heading fontSize="24px" mb="10px" color="#4C6711">
         今日の運勢は{fortune.type}なのだ！
       </Heading>
-      <Text>{fortune.message}</Text>
+      <Text mb="20px">{fortune.message}</Text>
+      <IconButton
+        icon={<Volume2Icon />}
+        colorScheme="teal"
+        variant="outline"
+        onClick={handlePlayAudio}
+        aria-label="読み上げるのだ"
+        alignSelf="center"
+      />
     </Motion>
   );
 };
