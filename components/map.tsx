@@ -4,10 +4,10 @@
 import { DirectionsRenderer, GoogleMap, MarkerF } from "@react-google-maps/api";
 import {
   Box,
+  Image,
   useAsync,
   useDisclosure,
-  Motion,
-  AnimatePresence,
+  useBoolean,
 } from "@yamada-ui/react";
 import { CSSProperties, useState } from "react";
 
@@ -34,7 +34,7 @@ const MapComponent = () => {
     google.maps.DirectionsResult | undefined
   >(undefined);
 
-  const [showFortune, setShowFortune] = useState(false);
+  const [showFortune, { toggle: toggleFortune }] = useBoolean(false);
 
   const { selectedKey } = useFilter();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -152,42 +152,23 @@ const MapComponent = () => {
       </GoogleMap>
 
       {/* おみくじアイコン */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "15px",
-          right: "15px",
-          cursor: "pointer",
-        }}
-        onClick={() => {
-          setShowFortune(!showFortune);
-        }}
+      <Box
+        position="fixed"
+        bottom="15px"
+        right="15px"
+        cursor="pointer"
+        onClick={toggleFortune}
       >
-        <img
+        <Image
           src="/icon/deer.png"
           alt="Deer Icon"
-          style={{ width: "120px", height: "120px" }}
+          width="120px"
+          height="120px"
         />
-      </div>
+      </Box>
 
       {/* おみくじ表示 */}
-      <AnimatePresence>
-        {showFortune && (
-          <Motion
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            style={{
-              position: "fixed",
-              bottom: "120px",
-              right: "10px",
-            }}
-          >
-            <Fortune />
-          </Motion>
-        )}
-      </AnimatePresence>
+      <Fortune showFortune={showFortune} />
     </Box>
   );
 };

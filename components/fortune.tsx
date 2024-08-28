@@ -1,5 +1,5 @@
-import { Motion, AnimatePresence } from "@yamada-ui/react";
-import React, { useState, useEffect } from "react";
+import { Motion, Heading, Text } from "@yamada-ui/react";
+import React, { useState, useEffect, FC } from "react";
 
 // おみくじの内容をリストとして定義
 const fortunes = [
@@ -65,50 +65,49 @@ const fortunes = [
   },
 ];
 
-const Fortune: React.FC = () => {
+const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
   const [fortune, setFortune] = useState<{
     type: string;
     message: string;
   } | null>(null);
 
   useEffect(() => {
-    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-    setFortune(randomFortune);
-  }, []);
+    if (showFortune) {
+      const randomFortune =
+        fortunes[Math.floor(Math.random() * fortunes.length)];
+      setFortune(randomFortune);
+    }
+  }, [showFortune]);
+
+  if (!showFortune || !fortune) return null;
 
   return (
-    <AnimatePresence>
-      {fortune && (
-        <Motion
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          style={{
-            marginTop: "20px",
-            padding: "30px",
-            width: "500px",
-            height: "410px",
-            backgroundImage: "url(/icon/speech-bubble.png)",
-            backgroundSize: "cover",
-            color: "#60694B",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            textAlign: "center",
-            fontFamily: "FUTENE",
-            fontSize: "20px",
-          }}
-        >
-          <h2
-            style={{ fontSize: "24px", marginBottom: "10px", color: "#4C6711" }}
-          >
-            今日の運勢は{fortune.type}なのだ！
-          </h2>
-          <p>{fortune.message}</p>
-        </Motion>
-      )}
-    </AnimatePresence>
+    <Motion
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+      mt="20px"
+      p="30px"
+      w="500px"
+      h="410px"
+      bgImage="url(/icon/speech-bubble.png)"
+      bgSize="cover"
+      color="#60694B"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      textAlign="center"
+      fontSize="20px"
+      position="fixed"
+      bottom="120px"
+      right="10px"
+    >
+      <Heading fontSize="24px" mb="10px" color="#4C6711">
+        今日の運勢は{fortune.type}なのだ！
+      </Heading>
+      <Text>{fortune.message}</Text>
+    </Motion>
   );
 };
 
