@@ -1,3 +1,4 @@
+"use client";
 import { Volume2Icon } from "@yamada-ui/lucide";
 import { Motion, Heading, Text, IconButton } from "@yamada-ui/react";
 import React, { useState, useEffect, FC } from "react";
