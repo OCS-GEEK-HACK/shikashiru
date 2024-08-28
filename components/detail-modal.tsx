@@ -40,33 +40,23 @@ export const DetailModal: FC<DetailModalProps> = ({
   onNavigate,
   onClose,
 }) => {
-  const handlePlayAudio = async () => {
-    const url = `/api/voicevox?text=${encodeURIComponent(name)}`;
-    const audio = new Audio(url);
+  const url = new URL("https://zunda-typing.onrender.com/voicevox");
+  url.searchParams.set("text", description);
+  const audio = new Audio(url.toString());
+  const handlePlayAudio = () => {
     audio.play();
-    // console.log("音声を再生しました");
+  };
 
-    // try {
-    //   const response = await fetch(`/api/voicevox?text=${encodeURIComponent(name)}`);
-    //   if (response.ok) {
-    //     const audioUrl = await response.text();
-    //     const audioInstance = new Audio(audioUrl);
-    //     setAudio(audioInstance);
-    //     audioInstance.play();
-    //     console.log("音声を再生しました");
-
-    //   } else {
-    //     console.error("音声URLの取得に失敗しました");
-    //   }
-    // } catch (error) {
-    //   console.error("エラーが発生しました:", error);
-    // }
+  const handleClose = () => {
+    audio.pause();
+    audio.currentTime = 0;
+    onClose();
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       maxWidth="7xl"
       fontFamily="FUTENE"
       size="lg"
@@ -109,7 +99,7 @@ export const DetailModal: FC<DetailModalProps> = ({
       </ModalBody>
 
       <ModalFooter>
-        <Button variant="ghost" onClick={onClose}>
+        <Button variant="ghost" onClick={handleClose}>
           とじる
         </Button>
         <Button colorScheme="teal" onClick={onNavigate}>
