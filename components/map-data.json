@@ -34,5 +34,145 @@
     "category": ["parks"],
     "lat": 34.681667119777735,
     "lng": 135.83193391928663
+  },
+  {
+    "name": "なら工藝館",
+    "description": "なら工藝館は、奈良の工芸の復興発展を目指す施設なのだ。奈良の工芸品の展示販売や工芸教室、工芸の実演などを行っているのだ。",
+    "images": [
+      "/image/narakougei1.jpg",
+      "/image/narakougei2.jpg",
+      "/image/narakougei3.jpg"
+    ],
+    "category": ["museum", "shop"],
+    "lat": 34.678806878737504,
+    "lng": 135.82826400760416
+  },
+  {
+    "name": "平宗 奈良店 本館",
+    "description": "創業150年を迎える柿の葉寿司のお店なのだ。小上がりや宴会座席を完備する趣のある店内で、名物の柿の葉寿司などの和食を食べれるのだ。持ち帰りコーナーも併設しているのだ。",
+    "images": [
+      "/image/kakinoha1.jfif",
+      "/image/kakinoha2.jpg",
+      "/image/kakinoha3.jpg"
+    ],
+    "category": ["restaurant"],
+    "lat": 34.680146104557274,
+    "lng": 135.83046254907515
+  },
+  {
+    "name": "庚申堂",
+    "description": "「庚申さん」とよばれる青面金剛像がまつられているのだ。この庚申さんのお使いの猿を型どったお守りは、魔除けとして、よくならまちの家の軒先にぶら下がっているのだ。",
+    "images": [
+      "/image/kousindou1.jpg",
+      "/image/kousindou2.jpg",
+      "/image/kousindou3.jpg"
+    ],
+    "category": ["historical-sites"],
+    "lat": 34.676637402762076,
+    "lng": 135.82986205800734
+  },
+  {
+    "name": "奈良町資料館",
+    "description": "地元の工芸品、装飾品、その他のアート作品を揃えた小さな資料館と売店なのだ。",
+    "images": [
+      "/image/siryoukan1.jpg",
+      "/image/siryoukan2.jpg",
+      "/image/siryoukan3.png"
+    ],
+    "category": ["historical-sites", "shop"],
+    "lat": 34.67700602844764,
+    "lng": 135.8301535508092
+  },
+  {
+    "name": "奈良町にぎわいの家",
+    "description": "奈良町にぎわいの家は、1917年築の町屋なのだ。伝統文化にまつわる催しが行われていて、国の登録有形文化財に登録されているのだ。",
+    "images": [
+      "/image/nigiwai1.jpg",
+      "/image/nigiwai2.jpg",
+      "/image/nigiwai3.jpg"
+    ],
+    "category": ["historical-sites"],
+    "lat": 34.67727223050356,
+    "lng": 135.83041455574826
+  },
+  {
+    "name": "鹿猿狐ビルヂング",
+    "description": "中川政七商店の鹿、猿田彦珈琲の猿、㐂つねの狐の３匹が集う建物「鹿猿狐ビルヂング」なのだ。創業の地に満を持して構える旗艦店「中川政七商店 奈良本店」をはじめ、関西初出店となる飲食店「㐂つね」や「猿田彦珈琲」、まちづくりの拠点となるコワーキングスペース「JIRIN」など、触れ、学び、味わう様々な体験を用意しているのだ。",
+    "images": [
+      "/image/sikasaru1.jpg",
+      "/image/sikasaru2.jpg",
+      "/image/sikasaru3.jpg"
+    ],
+    "category": ["restaurant", "shop"],
+    "lat": 34.681318496794425,
+    "lng": 135.82988128155225
+  },
+  {
+    "name": "御霊神社",
+    "description": "平安時代初期、桓武天皇の勅命により創祀された神社なのだ。奈良時代、無実の罪をかけられ幽閉された後になくなられた、井上内親王（光仁天皇の皇后であり、聖武天皇の皇女）と御子の他戸親王を慰霊し、奈良町を守護する氏神様として御本殿でおまつりしているのだ。",
+    "images": [
+      "/image/goryou1.jpg",
+      "/image/goryou2.jpg",
+      "/image/goryou3.jpg"
+    ],
+    "category": ["historical-sites", "shrines"],
+    "lat": 34.67659021362245,
+    "lng": 135.83092968632457
+  },
+  {
+    "name": "率川神社",
+    "description": "奈良市最古の神社、御子神様である御祭神・媛踏鏑五十鈴姫命をお守りするように、向かって左に父神・狭丼大神 (さいのおおかみ)、右に母神・玉櫛姫命（たまくしひめのみこと）をおまつりしていることから、古くより「子守明神」と親しまれ、安産、生育安全、家庭円満の神として信仰を集めている神社なのだ。",
+    "images": [
+      "/image/isakawa1.jpg",
+      "/image/isakawa2.jpg",
+      "/image/isakawa3.jpg"
+    ],
+    "category": ["historical-sites", "shrines"],
+    "lat": 34.67636553936549,
+    "lng": 135.8300444482263
+  },
+  {
+    "name": "ならまち菓子工房プティ・マルシェ",
+    "description": "オーダーケーキと焼菓子の専門店ですがカフェも営業しているのだ。最近話題の古墳型ケーキは、小型から大型まで製造販売しているのだ。",
+    "images": ["/image/puchi1.jpg", "/image/puchi2.jpg", "/image/puchi3.jpg"],
+    "category": ["restaurant"],
+    "lat": 34.681428365135496,
+    "lng": 135.83000790028171
+  },
+  {
+    "name": "奈良酒専門店 なら泉勇斎",
+    "description": "県内28の酒蔵で醸造された120種類以上の地酒を厳選して販売する奈良の日本酒専門店なのだ。全てのお酒を200円（1グラス/50cc）から試飲できるので、ならまちに居ながら県内全域の地酒を楽しめるのだ。",
+    "images": [
+      "/image/narasake1.jpg",
+      "/image/narasake2.jpg",
+      "/image/narasake3.png"
+    ],
+    "category": ["shop"],
+    "lat": 34.68002048904653,
+    "lng": 135.82925151164682
+  },
+  {
+    "name": "ギャラリー＆カフェ ならまち村",
+    "description": "築約100年、昔のお茶屋さんを改修。1階は喫茶店、おいしい珈琲でゆっくりおくつろぎくださいなのだ。2階はギャラリー、不定期でさまざまなアート作品を展示しているのだ。",
+    "images": [
+      "/image/naramura1.jpg",
+      "/image/naramura2.jpg",
+      "/image/naramura3.jpg"
+    ],
+    "category": ["restaurant", "historical-sites"],
+    "lat": 34.68051229783728,
+    "lng": 135.8295570116468
+  },
+  {
+    "name": "奈良町からくりおもちゃ館",
+    "description": "伝統的な奈良町の町家の中で、昔ながらの「からくりおもちゃ」が多数展示されているのだ。触れて遊んでも大丈夫！なのだ。「からくりおもちゃ製作体験講座」も毎月開催されているのだ。",
+    "images": [
+      "/image/omotya1.jpg",
+      "/image/omotya2.jpg",
+      "/image/omotya3.jpg"
+    ],
+    "category": ["historical-sites", "museum"],
+    "lat": 34.67755934148768,
+    "lng": 135.82808631000574
   }
 ]
