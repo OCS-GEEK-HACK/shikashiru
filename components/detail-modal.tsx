@@ -40,10 +40,23 @@ export const DetailModal: FC<DetailModalProps> = ({
   onNavigate,
   onClose,
 }) => {
+  const url = new URL("https://zunda-typing.onrender.com/voicevox");
+  url.searchParams.set("text", description);
+  const audio = new Audio(url.toString());
+  const handlePlayAudio = () => {
+    audio.play();
+  };
+
+  const handleClose = () => {
+    audio.pause();
+    audio.currentTime = 0;
+    onClose();
+  };
+
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       maxWidth="7xl"
       fontFamily="FUTENE"
       size="lg"
@@ -77,6 +90,7 @@ export const DetailModal: FC<DetailModalProps> = ({
             icon={<Volume2Icon />}
             colorScheme="teal"
             variant="outline"
+            onClick={handlePlayAudio}
           />
         </HStack>
         <Text fontSize="xl" mt="2">
@@ -85,7 +99,7 @@ export const DetailModal: FC<DetailModalProps> = ({
       </ModalBody>
 
       <ModalFooter>
-        <Button variant="ghost" onClick={onClose}>
+        <Button variant="ghost" onClick={handleClose}>
           とじる
         </Button>
         <Button colorScheme="teal" onClick={onNavigate}>
