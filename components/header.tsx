@@ -71,7 +71,7 @@ export const Header: FC = () => {
       zIndex={1}
       ref={headerRef}
     >
-      <Heading fontFamily="FUTENE" color="h1.500">
+      <Heading fontFamily="FUTENE" color="h1.500" userSelect="none">
         シカシる
         <Text as="span" fontSize="md">
           なのだ。
