@@ -2,10 +2,17 @@
 
 //Map component Component from library
 import { DirectionsRenderer, GoogleMap, MarkerF } from "@react-google-maps/api";
-import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
+import {
+  Box,
+  Image,
+  useAsync,
+  useDisclosure,
+  useBoolean,
+} from "@yamada-ui/react";
 import { CSSProperties, useState } from "react";
 
 import { DetailModal } from "./detail-modal";
+import Fortune from "./fortune";
 
 import mapData from "@/components/map-data.json";
 import { useFilter } from "@/contexts/filter-context";
@@ -26,6 +33,9 @@ const MapComponent = () => {
   const [directionsResponse, setDirectionsResponse] = useState<
     google.maps.DirectionsResult | undefined
   >(undefined);
+
+  const [showFortune, { toggle: toggleFortune }] = useBoolean(false);
+
   const { selectedKey } = useFilter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const defaultMapZoom = 17;
@@ -140,6 +150,25 @@ const MapComponent = () => {
           <DirectionsRenderer directions={directionsResponse} />
         )}
       </GoogleMap>
+
+      {/* おみくじアイコン */}
+      <Box
+        position="fixed"
+        bottom="15px"
+        right="15px"
+        cursor="pointer"
+        onClick={toggleFortune}
+      >
+        <Image
+          src="/icon/deer.png"
+          alt="Deer Icon"
+          width="120px"
+          height="120px"
+        />
+      </Box>
+
+      {/* おみくじ表示 */}
+      <Fortune showFortune={showFortune} />
     </Box>
   );
 };
