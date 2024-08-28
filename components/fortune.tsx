@@ -87,10 +87,10 @@ const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      mt="20px"
-      p="30px"
-      w="500px"
-      h="410px"
+      mt="5"
+      p="7.5"
+      w={{ base: "500px", md: "lg" }}
+      h={{ base: "410px", md: "md" }}
       bgImage="url(/icon/speech-bubble.png)"
       bgSize="cover"
       color="#60694B"
@@ -98,12 +98,12 @@ const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
       flexDirection="column"
       justifyContent="center"
       textAlign="center"
-      fontSize="20px"
+      fontSize="xl"
       position="fixed"
-      bottom="120px"
-      right="10px"
+      bottom="28"
+      right={{ base: "2.5", md: "-1" }}
     >
-      <Heading fontSize="24px" mb="10px" color="#4C6711">
+      <Heading fontSize="2xl" mb="2.5" color="#4C6711">
         今日の運勢は{fortune.type}なのだ！
       </Heading>
       <Text>{fortune.message}</Text>

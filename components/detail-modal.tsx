@@ -65,7 +65,13 @@ export const DetailModal: FC<DetailModalProps> = ({
       <ModalHeader></ModalHeader>
 
       <ModalBody>
-        <Carousel slideSize="50%" autoplay delay={3000} dragFree h="sm">
+        <Carousel
+          slideSize={{ base: "50%", md: "full" }}
+          autoplay
+          delay={3000}
+          dragFree
+          h="sm"
+        >
           {images.map((image, index) => (
             <CarouselSlide key={index} as={Center} bg="primary">
               <Image

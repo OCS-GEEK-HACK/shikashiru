@@ -105,7 +105,7 @@ export const Header: FC = () => {
                         src={data.images[0]}
                       />
                     </Box>
-                    <VStack w="md">
+                    <VStack w={{ base: "md", md: "xs" }}>
                       <Text>{data.name}</Text>
                       <Text isTruncated>{data.description}</Text>
                     </VStack>
