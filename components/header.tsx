@@ -1,18 +1,30 @@
 "use client";
 
 import {
+  Box,
   Button,
   ButtonGroup,
+  Card,
+  CardBody,
   Heading,
   HStack,
+  Image,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  Popover,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+  ScrollArea,
   Text,
+  useAsync,
+  VStack,
 } from "@yamada-ui/react";
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 
+import mapData from "@/components/map-data.json";
 import { useFilter } from "@/contexts/filter-context";
 
 const filterData = [
@@ -32,6 +44,17 @@ const filterData = [
 
 export const Header: FC = () => {
   const { selectedKey, setSelectedKey } = useFilter();
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const [headerHeight, setHeaderHeight] = useState<number | null>(null);
+
+  useAsync(async () => {
+    if (headerRef.current) {
+      // ヘッダーの高さを取得
+      const height = headerRef.current.getBoundingClientRect().height;
+      setHeaderHeight(height);
+    }
+  });
+
   return (
     <HStack
       w="full"
@@ -46,6 +69,7 @@ export const Header: FC = () => {
       position="fixed"
       top={0}
       zIndex={1}
+      ref={headerRef}
     >
       <Heading fontFamily="FUTENE" color="h1.500">
         シカシる
@@ -54,7 +78,43 @@ export const Header: FC = () => {
         </Text>
       </Heading>
       <ButtonGroup gap="md" variant="link">
-        <Button>一覧</Button>
+        <Popover animation="right" closeOnButton={false} offset={[0, 28]}>
+          <PopoverTrigger>
+            <Button>一覧</Button>
+          </PopoverTrigger>
+          <PopoverContent
+            background="whiteAlpha.100"
+            boxShadow="none"
+            border="none"
+          >
+            <PopoverBody
+              gap="md"
+              as={ScrollArea}
+              h={`calc(100dvh - ${headerHeight}px)`}
+              m={0}
+              py="md"
+            >
+              {mapData.map((data) => (
+                <Card key={data.name} bgColor="white" w="full">
+                  <CardBody flexDir="row">
+                    <Box boxSize="4xs">
+                      <Image
+                        w="full"
+                        h="full"
+                        objectFit="cover"
+                        src={data.images[0]}
+                      />
+                    </Box>
+                    <VStack w="md">
+                      <Text>{data.name}</Text>
+                      <Text isTruncated>{data.description}</Text>
+                    </VStack>
+                  </CardBody>
+                </Card>
+              ))}
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
         <Menu offset={[0, 28]}>
           <MenuButton as={Button}>フィルター</MenuButton>
           <MenuList
