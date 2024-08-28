@@ -2,10 +2,17 @@
 
 //Map component Component from library
 import { DirectionsRenderer, GoogleMap, MarkerF } from "@react-google-maps/api";
-import { Box, useAsync, useDisclosure } from "@yamada-ui/react";
+import {
+  Box,
+  useAsync,
+  useDisclosure,
+  Motion,
+  AnimatePresence,
+} from "@yamada-ui/react";
 import { CSSProperties, useState } from "react";
 
 import { DetailModal } from "./detail-modal";
+import Fortune from "./fortune";
 
 import mapData from "@/components/map-data.json";
 import { useFilter } from "@/contexts/filter-context";
@@ -26,6 +33,9 @@ const MapComponent = () => {
   const [directionsResponse, setDirectionsResponse] = useState<
     google.maps.DirectionsResult | undefined
   >(undefined);
+
+  const [showFortune, setShowFortune] = useState(false);
+
   const { selectedKey } = useFilter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const defaultMapZoom = 17;
@@ -140,6 +150,44 @@ const MapComponent = () => {
           <DirectionsRenderer directions={directionsResponse} />
         )}
       </GoogleMap>
+
+      {/* おみくじアイコン */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: "15px",
+          right: "15px",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          setShowFortune(!showFortune);
+        }}
+      >
+        <img
+          src="/icon/deer.png"
+          alt="Deer Icon"
+          style={{ width: "120px", height: "120px" }}
+        />
+      </div>
+
+      {/* おみくじ表示 */}
+      <AnimatePresence>
+        {showFortune && (
+          <Motion
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            style={{
+              position: "fixed",
+              bottom: "120px",
+              right: "10px",
+            }}
+          >
+            <Fortune />
+          </Motion>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };
