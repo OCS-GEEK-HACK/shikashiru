@@ -40,6 +40,29 @@ export const DetailModal: FC<DetailModalProps> = ({
   onNavigate,
   onClose,
 }) => {
+  const handlePlayAudio = async () => {
+    const url = `/api/voicevox?text=${encodeURIComponent(name)}`;
+    const audio = new Audio(url);
+    audio.play();
+    // console.log("音声を再生しました");
+
+    // try {
+    //   const response = await fetch(`/api/voicevox?text=${encodeURIComponent(name)}`);
+    //   if (response.ok) {
+    //     const audioUrl = await response.text();
+    //     const audioInstance = new Audio(audioUrl);
+    //     setAudio(audioInstance);
+    //     audioInstance.play();
+    //     console.log("音声を再生しました");
+
+    //   } else {
+    //     console.error("音声URLの取得に失敗しました");
+    //   }
+    // } catch (error) {
+    //   console.error("エラーが発生しました:", error);
+    // }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -77,6 +100,7 @@ export const DetailModal: FC<DetailModalProps> = ({
             icon={<Volume2Icon />}
             colorScheme="teal"
             variant="outline"
+            onClick={handlePlayAudio}
           />
         </HStack>
         <Text fontSize="xl" mt="2">
