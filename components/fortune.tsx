@@ -115,7 +115,7 @@ const Fortune: FC<{ showFortune: boolean }> = ({ showFortune }) => {
       <Heading fontSize="24px" mb="10px" color="#4C6711">
         今日の運勢は{fortune.type}なのだ！
       </Heading>
-      <Text mb="20px">{fortune.message}</Text>
+      <Text mb="5">{fortune.message}</Text>
       <IconButton
         icon={<Volume2Icon />}
         colorScheme="teal"
